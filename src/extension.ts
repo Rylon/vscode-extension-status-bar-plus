@@ -2,6 +2,8 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
+let statusBarItem: vscode.StatusBarItem;
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -21,6 +23,16 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	context.subscriptions.push(disposable);
+
+	// Add a status bar item to the right of the status bar, highest priority means it'll be the left most of the icons on the right.
+	statusBarItem = vscode.window.createStatusBarItem(
+		vscode.StatusBarAlignment.Right,
+		99999
+	);
+	context.subscriptions.push(statusBarItem);
+
+	statusBarItem.text = "hello world";
+	statusBarItem.show();
 }
 
 // this method is called when your extension is deactivated
