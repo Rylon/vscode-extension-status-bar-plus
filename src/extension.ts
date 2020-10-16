@@ -29,11 +29,49 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.StatusBarAlignment.Right,
     99999
   );
-  context.subscriptions.push(statusBarItem);
 
-  statusBarItem.text = "hello world";
-  statusBarItem.show();
+  // Push the status bar itself into the Extension context, and register to call our update method
+  // on certain editor events, so the statusbar item keeps itself up to date.
+  context.subscriptions.push(
+    statusBarItem,
+    vscode.window.onDidChangeActiveTextEditor(updateStatusBarItemState),
+    vscode.window.onDidChangeTextEditorSelection(updateStatusBarItemState)
+  );
+
+  // Update the statusbar item's state immediately.
+  updateStatusBarItemState();
 }
 
 // this method is called when your extension is deactivated
 export function deactivate() {}
+
+export function updateStatusBarItemState() {
+  var editor = vscode.window.activeTextEditor;
+
+  if (!editor) {
+    // If there is no editor window openright now, hide the statusbar item.
+    statusBarItem.hide();
+    return;
+  } else {
+    // otherwise get the current editor state and update our statusbar accordingly.
+
+    var cursorPosition = editor.selection.active;
+    var text = `Ln ${cursorPosition.line + 1}, Col ${cursorPosition.character + 1}`;
+
+    console.log(editor.selection.start.character);
+    console.log(editor.selection.end.character);
+
+    if (editor.selection.start.line !== editor.selection.end.line ||
+      editor.selection.start.character !== editor.selection.end.character) {
+      // If the start and end of the selection is on a different line or column, then
+      // we know we have something highlighted, and we want to show how many lines are included.
+      var lines = editor.selection.end.line - editor.selection.start.line + 1;
+
+      console.log(`Selection ${lines}`);
+      text = `${text} (${lines} lines selected)`;
+    }
+
+    statusBarItem.text = text;
+    statusBarItem.show();
+  }
+}
