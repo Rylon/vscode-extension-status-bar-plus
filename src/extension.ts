@@ -65,10 +65,22 @@ export function updateStatusBarItemState() {
       editor.selection.start.character !== editor.selection.end.character) {
       // If the start and end of the selection is on a different line or column, then
       // we know we have something highlighted, and we want to show how many lines are included.
-      var lines = editor.selection.end.line - editor.selection.start.line + 1;
+      // var lines = editor.selection.end.line - editor.selection.start.line + 1;
 
-      console.log(`Selection ${lines}`);
-      text = `${text} (${lines} lines selected)`;
+      var total = [0, 1, 2, 3].reduce(function(a, b){ return a + b; });
+      console.log("total is : " + total );
+
+      var selectedLines = [];
+
+      for (let selection of editor.selections) {
+        selectedLines.push(selection.end.line - selection.start.line + 1);
+      }
+
+      var selectedLinesTotal = selectedLines.reduce(function(a, b){ return a + b; });
+      console.log(selectedLines);
+
+      console.log(`Selection ${selectedLinesTotal}`);
+      text = `${text} (${selectedLinesTotal} lines selected)`;
     }
 
     statusBarItem.text = text;
