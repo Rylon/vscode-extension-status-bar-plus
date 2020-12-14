@@ -52,38 +52,45 @@ export function updateStatusBarItemState() {
     // If there is no editor window openright now, hide the statusbar item.
     statusBarItem.hide();
     return;
-  } else {
+  }
+
+  else {
     // otherwise get the current editor state and update our statusbar accordingly.
 
-    var cursorPosition = editor.selection.active;
-    var text = `Ln ${cursorPosition.line + 1}, Col ${cursorPosition.character + 1}`;
-
-    console.log(editor.selection.start.character);
-    console.log(editor.selection.end.character);
+    if (editor.selections.length > 1) {
+      var text = `${editor.selections.length} selections`;
+    }
+    else {
+      var cursorPosition = editor.selection.active;
+      var text = `Ln ${cursorPosition.line + 1}, Col ${cursorPosition.character + 1}`;
+    }
 
     if (editor.selection.start.line !== editor.selection.end.line ||
       editor.selection.start.character !== editor.selection.end.character) {
       // If the start and end of the selection is on a different line or column, then
       // we know we have something highlighted, and we want to show how many lines are included.
-      // var lines = editor.selection.end.line - editor.selection.start.line + 1;
 
-      var total = [0, 1, 2, 3].reduce(function(a, b){ return a + b; });
-      console.log("total is : " + total );
-
-      var selectedLines = [];
+      var lineNumbers = new Set();
 
       for (let selection of editor.selections) {
-        selectedLines.push(selection.end.line - selection.start.line + 1);
+        // Generate a range of line numbers between the selection start and end, add to a set of unique line numbers.
+        range(selection.start.line, selection.end.line).forEach(item => lineNumbers.add(item));
       }
 
-      var selectedLinesTotal = selectedLines.reduce(function(a, b){ return a + b; });
-      console.log(selectedLines);
-
-      console.log(`Selection ${selectedLinesTotal}`);
-      text = `${text} (${selectedLinesTotal} lines selected)`;
+      text = `${text} (${lineNumbers.size} lines selected)`;
     }
 
     statusBarItem.text = text;
     statusBarItem.show();
   }
+
+}
+
+/**
+ * Returns an array of integers from `start` to `end` inclusive.
+ * @param start - The starting integer
+ * @param end - The ending integer
+ */
+function range(start: number, end: number) {
+  return Array(end - start + 1).fill(undefined).map((_, index) => start + index);
 }
