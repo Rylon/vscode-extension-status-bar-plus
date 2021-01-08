@@ -3,6 +3,15 @@
 	"displayName": "Better Status Bar",
 	"description": "Makes the status bar better.",
 	"version": "0.0.1",
+	"publisher": "rylon",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rylon/better-status-bar"
+	},
+	"bugs": {
+		"url": "https://github.com/rylon/better-status-bar/issues"
+	},
+	"license": "SEE LICENSE IN COPYING",
 	"engines": {
 		"vscode": "^1.49.0"
 	},
