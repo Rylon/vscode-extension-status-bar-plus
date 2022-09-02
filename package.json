@@ -2,6 +2,7 @@
 	"name": "better-status-bar",
 	"displayName": "Better Status Bar",
 	"description": "Makes the status bar better by counting the number of lines in your selection(s).",
+	"icon": "icon.png",
 	"version": "1.0.0",
 	"publisher": "rylon",
 	"repository": {
