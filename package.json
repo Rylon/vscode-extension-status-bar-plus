@@ -1,8 +1,8 @@
 {
 	"name": "better-status-bar",
 	"displayName": "Better Status Bar",
-	"description": "Makes the status bar better.",
-	"version": "0.0.1",
+	"description": "Makes the status bar better by counting the number of lines in your selection(s).",
+	"version": "1.0.0",
 	"publisher": "rylon",
 	"repository": {
 		"type": "git",
@@ -23,14 +23,6 @@
 		"onStartupFinished"
 	],
 	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "better-status-bar.helloWorld",
-				"title": "Hello World"
-			}
-		]
-	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
@@ -50,9 +42,11 @@
 		"glob": "^7.1.6",
 		"mocha": "^8.1.3",
 		"typescript": "^4.0.2",
+		"vsce": "^2.11.0",
 		"vscode-test": "^1.4.0"
 	},
 	"dependencies": {
+		"package": "^1.0.1",
 		"package.json": "^0.0.0"
 	}
 }
