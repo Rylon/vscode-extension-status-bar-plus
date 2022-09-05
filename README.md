@@ -1,10 +1,8 @@
-# better-status-bar
+# StatusBar+
 
-Better Status Bar is a tiny extension which adds a new item in the statusbar which counts the number of lines of code in your selection.
+StatusBar+ is a tiny extension which adds a new item in the statusbar which counts the number of lines of code in your selection. It also supports multiple cursors with multiple selections, adding them all together. You can then hide the built-in statusbar by right-clicking on the statusbar and deselecting `Editor Selection`.
 
-It also supports multiple cursors with multiple selections, adding them all together.
-
-You can then hide the built-in statusbar by right-clicking on the statusbar and deselecting `Editor Selection`.
+The name was chosen because I couldn't think of anything better 😅 and I wanted to keep my options open for adding other useful buttons in the future.
 
 ## Example
 
