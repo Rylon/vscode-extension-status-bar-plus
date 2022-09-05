@@ -1,16 +1,16 @@
 {
-	"name": "better-status-bar",
-	"displayName": "Better Status Bar",
-	"description": "Makes the status bar better by counting the number of lines in your selection(s).",
+	"name": "status-bar-plus",
+	"displayName": "StatusBar+",
+	"description": "Makes the status bar better by counting the number of lines in your selection(s). The name is keeping options open for future features 😅",
 	"icon": "icon.png",
 	"version": "1.0.0",
 	"publisher": "rylon",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/rylon/better-status-bar"
+		"url": "https://github.com/rylon/vscode-extension-status-bar-plus"
 	},
 	"bugs": {
-		"url": "https://github.com/rylon/better-status-bar/issues"
+		"url": "https://github.com/rylon/vscode-extension-status-bar-plus/issues"
 	},
 	"license": "SEE LICENSE IN COPYING",
 	"engines": {
@@ -18,10 +18,6 @@
 	},
 	"categories": [
 		"Other"
-	],
-	"activationEvents": [
-		"onCommand:better-status-bar.helloWorld",
-		"onStartupFinished"
 	],
 	"main": "./out/extension.js",
 	"scripts": {
