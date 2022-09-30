@@ -10,6 +10,10 @@ The name was chosen because I couldn't think of anything better 😅 and I wante
 
 ## Release Notes
 
+### 1.1.0
+
+Added a count of the number of characters in the current selection.
+
 ### 1.0.0
 
 Initial release.
