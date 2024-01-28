@@ -3,7 +3,7 @@
 	"displayName": "StatusBar+",
 	"description": "Makes the status bar better by counting the number of lines in your selection(s). The name is keeping options open for future features 😅",
 	"icon": "icon.png",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"publisher": "rylon",
 	"repository": {
 		"type": "git",
