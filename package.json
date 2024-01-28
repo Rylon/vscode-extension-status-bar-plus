@@ -46,7 +46,6 @@
 		"@vscode/test-electron": "^1.4.0"
 	},
 	"dependencies": {
-		"package": "^1.0.1",
-		"pkg.json": "^2.0.8"
+		"package": "^1.0.1"
 	}
 }
