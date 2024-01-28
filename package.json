@@ -13,9 +13,9 @@
 		"url": "https://github.com/rylon/vscode-extension-status-bar-plus/issues"
 	},
 	"license": "SEE LICENSE IN COPYING",
-	"engines": {
-		"vscode": "^1.49.0"
-	},
+  "engines": {
+    "vscode": "^1.85.0"
+  },
 	"categories": [
 		"Other"
 	],
@@ -29,23 +29,17 @@
 		"lint": "eslint src --ext ts",
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile && npm run lint",
-		"test": "node ./out/test/runTest.js"
+		"test": "vscode-test"
 	},
-	"devDependencies": {
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.0",
-		"@types/node": "^12.11.7",
-		"@types/vscode": "^1.49.0",
-		"@typescript-eslint/eslint-plugin": "^4.1.1",
-		"@typescript-eslint/parser": "^4.1.1",
-		"eslint": "^7.9.0",
-		"glob": "^7.1.6",
-		"mocha": "^10.2.0",
-		"typescript": "^4.0.2",
-		"@vscode/vsce": "^2.11.0",
-		"@vscode/test-electron": "^1.4.0"
-	},
-	"dependencies": {
-		"package": "^1.0.1"
-	}
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8"
+  }
 }
