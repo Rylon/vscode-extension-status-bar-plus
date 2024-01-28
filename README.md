@@ -10,6 +10,10 @@ The name was chosen because I couldn't think of anything better 😅 and I wante
 
 ## Release Notes
 
+### 1.2.0
+
+Updated the extension to use the latest version of the VS Code API, and resolve a number of NPM vulnerabilities.
+
 ### 1.1.0
 
 Added a count of the number of characters in the current selection.
