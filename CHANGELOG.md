@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.3.0
+## 1.3.0
 
 Updated to the latest versions of the VS Code extension dependencies, fixing several NPM vulnerabilities.
 
