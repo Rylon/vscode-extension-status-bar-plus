@@ -10,7 +10,7 @@ The name was chosen because I couldn't think of anything better 😅 and I wante
 
 ## Release Notes
 
-### 1.3.0
+### 1.3.0
 
 Updated to the latest versions of the VS Code extension dependencies, fixing several NPM vulnerabilities.
 
