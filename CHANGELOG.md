@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.3.0
+
+Updated to the latest versions of the VS Code extension dependencies, fixing several NPM vulnerabilities.
+
 ## 1.2.0
 
 Updated the extension to use the latest version of the VS Code API, and resolve a number of NPM vulnerabilities.
