@@ -1,12 +1,36 @@
 # StatusBar+
 
-StatusBar+ is a tiny extension which adds a new item in the statusbar which counts the number of lines of code in your selection. It also supports multiple cursors with multiple selections, adding them all together. You can then hide the built-in statusbar by right-clicking on the statusbar and deselecting `Editor Selection`.
+StatusBar+ is a small extension which adds a couple of useful items to your VS Code statusbar.
 
-The name was chosen because I couldn't think of anything better 😅 and I wanted to keep my options open for adding other useful buttons in the future.
+1. A proper line and column counter.
 
-## Example
+2. Worktree indicators.
 
-![Animated gif showing the statusbar item in action](example.gif)
+## Line and column counter
+
+Unlike the built-in "Editor Selection" which only shows the character count, StatusBar+ supports multiple cursors, with multiple selections, giving you accurate counts across them all.
+
+After installing StatusBar+, hide the built-in one by right-clicking in the status bar and deselecting `Editor Selection`.
+
+![Animated gif showing the improved line and column counter](example.gif)
+
+## Worktree indicators
+
+Git worktrees are a useful way to juggle multiple streams of work, by creating additional local copies of a repository, each pointing at a different branch, but the way VS Code handles these isn't great out of the box.
+
+StatusBar+ adds indicators next to the Git branch name, which clearly show you:
+
+1. If you're in the main checkout.
+
+2. Whether any worktrees are available.
+
+3. Or that you're currently inside a worktree, along with the path on disk.
+
+You can also click on the indicator to see a list of the available worktrees (including the main checkout) and quickly switch between them all (opening in a new window).
+
+![Example of the worktree indicator, showing the main checkout currently selected](worktrees-1.png)
+
+![Example of the worktree indicator, showing inside a worktree](worktrees-2.png)
 
 ## Release Notes
 
