@@ -14,7 +14,8 @@
   },
   "license": "SEE LICENSE IN COPYING",
   "engines": {
-    "vscode": "^1.109.0"
+    "vscode": "^1.109.0",
+    "npm": ">=11.10.0"
   },
   "categories": [
     "Other"
@@ -43,6 +44,8 @@
   },
   "overrides": {
     "diff": "^8.0.4",
-    "serialize-javascript": "^7.0.6"
+    "serialize-javascript": "^7.0.6",
+    "minimatch": "^11.0.1",
+    "glob": "^14.0.2"
   }
 }
