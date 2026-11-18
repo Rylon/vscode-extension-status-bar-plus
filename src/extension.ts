@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { activateWorktreeIndicator } from './worktree';
 
 let statusBarItem: vscode.StatusBarItem;
 
@@ -39,6 +40,8 @@ export function activate(context: vscode.ExtensionContext) {
 
   // Update the statusbar item's state immediately.
   updateStatusBarItemState();
+
+  void activateWorktreeIndicator(context);
 }
 
 // this method is called when your extension is deactivated
