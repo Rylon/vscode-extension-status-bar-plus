@@ -34,6 +34,12 @@ You can also click on the indicator to see a list of the available worktrees (in
 
 ## Release Notes
 
+### 1.4.0
+
+* Improved the counting logic to fix some miscounts in some edge cases.
+
+* Add new Git worktree indicators, making it possible to see at a glance whether you are in the main checkout, or a worktree, and quickly switch between them.
+
 ### 1.3.0
 
 Updated to the latest versions of the VS Code extension dependencies, fixing several NPM vulnerabilities.

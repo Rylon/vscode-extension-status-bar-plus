@@ -3,7 +3,7 @@
   "displayName": "StatusBar+",
   "description": "Makes the status bar better by counting the number of lines in your selection(s), and showing when you're in a Git worktree. The name is keeping options open for future features 😅",
   "icon": "icon.png",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "publisher": "rylon",
   "repository": {
     "type": "git",
