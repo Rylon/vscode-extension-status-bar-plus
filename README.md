@@ -1,5 +1,7 @@
 # StatusBar+
 
+<img src="icon.png" alt="The StatusBar+ icon" width="128">
+
 StatusBar+ is a small extension which adds a couple of useful items to your VS Code statusbar.
 
 1. A proper line and column counter.
@@ -28,9 +30,10 @@ StatusBar+ adds indicators next to the Git branch name, which clearly show you:
 
 You can also click on the indicator to see a list of the available worktrees (including the main checkout) and quickly switch between them all (opening in a new window).
 
-![Example of the worktree indicator, showing the main checkout currently selected](worktrees-1.png)
-
-![Example of the worktree indicator, showing inside a worktree](worktrees-2.png)
+<p>
+  <img src="worktrees-1.png" alt="Example of the worktree indicator, showing the main checkout currently selected" width="325">
+  <img src="worktrees-2.png" alt="Example of the worktree indicator, showing inside a worktree" width="406">
+</p>
 
 ## Release Notes
 
