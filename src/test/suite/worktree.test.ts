@@ -13,8 +13,12 @@ suite('worktreeIndicator', () => {
 		const indicator = worktreeIndicator('worktree', '/code/project.worktrees/feature', [mainWorktree, featureWorktree]);
 
 		assert.deepStrictEqual(indicator, {
-			text: '$(worktree) worktree',
-			tooltip: 'Worktree "feature"\n/code/project.worktrees/feature\n\nClick to open another worktree in a new window',
+			icon: 'worktree',
+			text: 'worktree',
+			tooltipLines: [
+				{ icon: 'worktree', text: 'Worktree "feature"' },
+				{ icon: 'folder', text: '/code/project.worktrees/feature' },
+			],
 		});
 	});
 
@@ -22,22 +26,23 @@ suite('worktreeIndicator', () => {
 		const rootPath = path.join(os.homedir(), 'code', 'project.worktrees', 'feature');
 		const indicator = worktreeIndicator('worktree', rootPath, []);
 
-		assert.strictEqual(indicator?.tooltip.split('\n')[1], path.join('~', 'code', 'project.worktrees', 'feature'));
+		assert.strictEqual(indicator?.tooltipLines[1].text, path.join('~', 'code', 'project.worktrees', 'feature'));
 	});
 
 	test('counts the other worktrees from the main checkout', () => {
 		const indicator = worktreeIndicator('repository', '/code/project', [mainWorktree, featureWorktree, detachedWorktree]);
 
 		assert.deepStrictEqual(indicator, {
-			text: '$(repo) 2 worktrees',
-			tooltip: 'Main checkout, with 2 worktrees\n\nClick to open one in a new window',
+			icon: 'repo',
+			text: '2 worktrees',
+			tooltipLines: [{ icon: 'repo', text: 'Main checkout, with 2 worktrees' }],
 		});
 	});
 
 	test('uses the singular for one other worktree', () => {
 		const indicator = worktreeIndicator('repository', '/code/project', [mainWorktree, featureWorktree]);
 
-		assert.strictEqual(indicator?.text, '$(repo) 1 worktree');
+		assert.strictEqual(indicator?.text, '1 worktree');
 	});
 
 	test('is hidden in a main checkout without other worktrees', () => {

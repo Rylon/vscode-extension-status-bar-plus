@@ -40,8 +40,8 @@ export async function activateWorktreeIndicator(context: vscode.ExtensionContext
       return;
     }
 
-    statusBarItem.text = indicator.text;
-    statusBarItem.tooltip = indicator.tooltip;
+    statusBarItem.text = `$(${indicator.icon}) ${indicator.text}`;
+    statusBarItem.tooltip = tooltipMarkdown(indicator.tooltipLines);
     statusBarItem.show();
   };
 
@@ -99,8 +99,12 @@ async function getGitApi(): Promise<API | undefined> {
 export function worktreeIndicator(kind: RepositoryKind, rootPath: string, worktrees: Worktree[]) {
   if (kind === 'worktree') {
     return {
-      text: '$(worktree) worktree',
-      tooltip: `Worktree "${path.basename(rootPath)}"\n${displayPath(rootPath)}\n\nClick to open another worktree in a new window`,
+      icon: 'worktree',
+      text: 'worktree',
+      tooltipLines: [
+        { icon: 'worktree', text: `Worktree "${path.basename(rootPath)}"` },
+        { icon: 'folder', text: displayPath(rootPath) },
+      ],
     };
   }
 
@@ -108,12 +112,31 @@ export function worktreeIndicator(kind: RepositoryKind, rootPath: string, worktr
   if (kind === 'repository' && otherWorktreeCount > 0) {
     const worktreesText = `${otherWorktreeCount} worktree${otherWorktreeCount === 1 ? '' : 's'}`;
     return {
-      text: `$(repo) ${worktreesText}`,
-      tooltip: `Main checkout, with ${worktreesText}\n\nClick to open one in a new window`,
+      icon: 'repo',
+      text: worktreesText,
+      tooltipLines: [{ icon: 'repo', text: `Main checkout, with ${worktreesText}` }],
     };
   }
 
   return undefined;
+}
+
+function tooltipMarkdown(lines: { icon: string; text: string }[]) {
+  const tooltip = new vscode.MarkdownString(undefined, true);
+  lines.forEach((line, index) => {
+    if (index > 0) {
+      // Line break inside a markdown paragraph, so the worktree name and path are visually aligned properly.
+      tooltip.appendMarkdown('  \n');
+    }
+    // Markdown collapses repeated spaces, so we need to use non-breaking spaces to add a gap after the icons.
+    tooltip.appendMarkdown(`$(${line.icon})&nbsp;&nbsp;`);
+    // `appendText` escapes Markdown syntax, to prevent glitches with special characters that may be in the path text.
+    tooltip.appendText(line.text);
+  });
+  // Line break after a paragraph, so we get a blank line separation between the tooltip content and the call to action.
+  tooltip.appendMarkdown('\n\n');
+  tooltip.appendText('Click to switch between worktrees...');
+  return tooltip;
 }
 
 async function pickWorktreeToOpen(repository: Repository) {
