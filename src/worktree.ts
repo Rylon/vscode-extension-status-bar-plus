@@ -1,3 +1,4 @@
+import * as os from 'os';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import type { API, GitExtension, Repository, RepositoryKind, Worktree } from './git';
@@ -99,7 +100,7 @@ export function worktreeIndicator(kind: RepositoryKind, rootPath: string, worktr
   if (kind === 'worktree') {
     return {
       text: '$(worktree) worktree',
-      tooltip: `Worktree "${path.basename(rootPath)}" at ${rootPath}\nClick to open another worktree in a new window`,
+      tooltip: `Worktree "${path.basename(rootPath)}"\n${displayPath(rootPath)}\n\nClick to open another worktree in a new window`,
     };
   }
 
@@ -108,7 +109,7 @@ export function worktreeIndicator(kind: RepositoryKind, rootPath: string, worktr
     const worktreesText = `${otherWorktreeCount} worktree${otherWorktreeCount === 1 ? '' : 's'}`;
     return {
       text: `$(repo) ${worktreesText}`,
-      tooltip: `Main checkout, with ${worktreesText}\nClick to open one in a new window`,
+      tooltip: `Main checkout, with ${worktreesText}\n\nClick to open one in a new window`,
     };
   }
 
@@ -134,6 +135,14 @@ export function worktreePickItems(worktrees: Worktree[], currentPath: string) {
     detail: worktree.path,
     worktree,
   }));
+}
+
+/**
+ * Shortens the home folder to `~`, so most paths fit on one line in the tooltip.
+ */
+function displayPath(fullPath: string) {
+  const homeDirectory = os.homedir();
+  return fullPath.startsWith(homeDirectory + path.sep) ? '~' + fullPath.substring(homeDirectory.length) : fullPath;
 }
 
 function otherWorktrees(worktrees: Worktree[], currentPath: string) {
