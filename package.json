@@ -1,7 +1,7 @@
 {
   "name": "status-bar-plus",
   "displayName": "StatusBar+",
-  "description": "Makes the status bar better by counting the number of lines in your selection(s), and showing when you're in a Git worktree. The name is keeping options open for future features 😅",
+  "description": "StatusBar+ is a small extension which adds a couple of useful items to your VS Code statusbar, including a better line and column counter, and Git worktree indicators.",
   "icon": "icon.png",
   "version": "1.4.0",
   "publisher": "rylon",
