@@ -11,3 +11,6 @@ vsc-extension-quickstart.md
 **/.vscode-test.*
 icon.svg
 .nvmrc
+out/test/**
+example.gif
+worktrees-*.png
